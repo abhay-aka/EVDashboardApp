@@ -19,7 +19,6 @@ export function EVDataProvider({ children }) {
             responseType: 'text',
           }
         );
-
         Papa.parse(response.data, {
           header: true,
           skipEmptyLines: true,
@@ -53,8 +52,7 @@ export function EVDataProvider({ children }) {
                 Electric_Utility: item["Electric Utility"],
                 Census_Tract: item["2020 Census Tract"]
               }));
-
-            setEVData(cleanData => cleanData);
+            setEVData(cleanData);
             setLoading(false);
           },
           error: (error) => {
@@ -69,7 +67,6 @@ export function EVDataProvider({ children }) {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -160,7 +157,6 @@ export function EVDataProvider({ children }) {
     const years = [...new Set(evData.map(car => car.Model_Year.toString()))]
       .sort((a, b) => b - a); // Sort years in descending order
     const states = [...new Set(evData.map(car => car.State))].sort();
-    console.log(states)
     return {
       years: ['All', ...years],
       states: ['All', ...states]
@@ -184,7 +180,6 @@ export function EVDataProvider({ children }) {
 
 export function useEVData() {
   const context = useContext(EVDataContext);
-
   if (!context) {
     throw new Error('useEVData must be used within an EVDataProvider');
   }

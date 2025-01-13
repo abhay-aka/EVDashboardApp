@@ -10,7 +10,6 @@ export default function DataFilters({ filters, setFilters }) {
 
   const allYears = [ ...years];
   const allStates = [ ...states];
-console.log(filters.year)
   return (
     <div className="flex gap-4 mb-6 bg-white p-4 rounded-lg shadow">
       <Menu as="div" className="relative">
